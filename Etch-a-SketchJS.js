@@ -21,14 +21,12 @@ let createGrid = num => {
         var cell = document.createElement('div');
         cell.classList.add('cell');
         cell.id = i;
+        cell.style.backgroundColor = 'white'
         gridContainer.append(cell);
     }
     gridContainer.style.gridTemplateRows = `repeat(${num}, 1fr)`;
     gridContainer.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
 
-
-    //Random RGB color - number value
-    let randomRGB = () => Math.floor((Math.random()*257));
 
     // let addBackground = () => {
     //     cell.style.background = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`
@@ -39,12 +37,19 @@ let createGrid = num => {
         cell.addEventListener('mouseenter', () => {
             cell.style.background = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`}, {once: true})
 });
+document.body.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
 }
+
+//Random RGB color - number value
+let randomRGB = () => Math.floor((Math.random()*257));
 
 
 //Append grid container to the box container already in the HTML
 boxContainer.append(gridContainer);
-createGrid(16);
+
+
+//Initial Display features 10x10 grid
+createGrid(10);
 
 
 
@@ -61,8 +66,12 @@ document.body.prepend(buttonContainer)
 
 
 button.addEventListener('click', () => {
-    let choice = window.prompt('How many squares per side?');
-    createGrid(choice);
+    let choice = window.prompt('How many squares per side?', 'Value must be < 100');
+    if (!isNaN(choice)){
+        createGrid(Math.abs(choice));
+    } else {
+        alert('Please input a number.')
+    }
 })
 
 
