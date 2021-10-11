@@ -78,6 +78,9 @@
 .options > .active{
     background-color: rgb(177, 243, 241);
 }
+button.active{
+    background-color: rgb(177, 243, 241);
+}
 
 footer {
     position: fixed;
