@@ -1,4 +1,4 @@
-# [Etch-A-Sketch](https://decoderwring.github.io/Etch-a-Sketch/)
+# [Etch-A-Sketch](https://zach-adcock.github.io/Etch-A-Sketch/)
 
 ## Overview
 Your classic etch-a-sketch with a colorful twist.
