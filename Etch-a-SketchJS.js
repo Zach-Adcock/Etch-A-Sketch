@@ -90,7 +90,7 @@ boxContainer.append(gridContainer);
 //Creating reset button and its container
 const button = document.createElement('button');
 button.classList.add('reset-button');
-button.textContent = 'Create New Grid';
+button.textContent = 'Resize Grid';
 const buttonContainer = document.createElement('div');
 buttonContainer.classList.add('button-container');
 

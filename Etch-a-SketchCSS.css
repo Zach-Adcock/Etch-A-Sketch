@@ -71,6 +71,7 @@
     width: 100%;
     border-radius: 15px;
     font-size: 40px;
+    background-color: white;
 }
 .options > button:hover{
     transform: scale(1.1);
