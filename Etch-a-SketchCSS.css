@@ -1,3 +1,6 @@
+.body {
+    font-size: 500px;
+}
 .wrapper {
     max-width: 100%;
 }
@@ -25,7 +28,7 @@
 }
 
 .cell {
-    /* border: 1px solid green; */
+    border: none;
 }
 
 .button-container {
@@ -34,28 +37,40 @@
     height: 100px;
 }
 .button-container > button{
-    width: 40%;
+    width: 60%;
     height: 80%;
+    font-size: 50px;
+    margin: 20px auto 10px auto;
 }
 
-.reset-button {
-    margin: 10px auto 10px auto;
-    height: 40px;
-    width: 200px;
-}
 .options {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    width: 100%;
+    height: 400px;
+
     order: 2;
     margin-top: 40px;
+    font-size: 40px;
+    padding: 5px;
 }
-.options > button{
-    width: 150px;
-    height: 50px;
+.option-buttons {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 3px;
+    flex-basis: 100%;
+    flex: 1.5;
+    margin: 5px;
+}
+.option-buttons > button{
+    height: 25%;
+    width: 100%;
     border-radius: 15px;
+    font-size: 40px;
 }
 .options > button:hover{
     transform: scale(1.1);
@@ -87,18 +102,23 @@ footer {
 .footer-container > p{
     margin-right: 20px;
 }
+
 /* Styling to make color selector more aesthetically pleasing  */
 .color-choice {
+    flex-basis: 80%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     gap: 10px;
     border: solid 2px black;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 50%;
     background-color: white;
     border-radius: 15px;
+    margin: 5px;
 }
 #color-selector{
     -webkit-appearance: none;
@@ -121,30 +141,94 @@ footer {
     transform: scale(1.1);
 }
 
-/* @media only screen and (max-width: 900px) {
+@media only screen and (min-width: 990px) {
     .wrapper {
         max-width: 100%;
     }
     .main {
-        display: grid;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+
+    }
+    .button-container {
+        display: flex;
+        width: 100%;
+        height: 70px;
+    }
+    .button-container > button{
+        width: 30%;
+        height: 80%;
+        font-size: 30px;
+        margin: 20px auto 10px auto;
+    }
+    .grid-container {
+        border: 1px solid blue;
+        height: 37vw;
+        width: 37vw;
+        margin: 25px;
+        border: 8px solid black;
+    } 
+    .options {
+        display: flex;
         flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: flex-end;
+
+        height: 100%;
+    
+        order: 2;
+        flex: 1;
+        margin-top: 40px;
+        margin-left: 50px;
+        font-size: 30px;
+        padding: 50px;
     }
     .squares-container {
-    display: flex;
-    flex: 5;
-    padding: 10px;
-    align-items: center;
+        display: flex;
+        justify-content: flex-start;
+        flex: 5;
+        padding-left: 100px;
+        align-items: center;
+        order: 4;
     }
     .color-choice {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border: solid 2px black;
-    height: 200px;
-    width: 100px;
-    background-color: white;
-    border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: solid 2px black;
+        height: 200px;
+        width: 200px;
+        background-color: white;
+        border-radius: 15px;
+    }
+    .option-buttons > button{
+        height: 25%;
+        width: 100%;
+        border-radius: 15px;
+        font-size: 30px;
+    }
+    }
+    #github-logo {
+        width: 50px;
+        height: 50px;
+    }
+    .footer-container {
+        display: flex;
+        font-size: 20px;
+        align-items: center;
+    }
+    
+    .footer-container > p{
+        margin-right: 20px;
+    }
+} 
+
+@media only screen and (min-width: 1700px) {
+    .options {
+        margin-left: 75px;
+    }
 }
-} */

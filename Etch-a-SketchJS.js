@@ -122,3 +122,6 @@ gridContainer.addEventListener('touchmove', function(e) {
     let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
     if (cellTarget.classList.contains('cell')) cellTarget.style.background = getCurrentColor()
 });
+
+//clearButton
+clearButton.addEventListener('click', createGrid)
