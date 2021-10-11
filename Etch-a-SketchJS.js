@@ -80,6 +80,9 @@ let createGrid = () => {
     });
 document.body.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
 }
+
+createGrid(); //initial grid creation. Default size used
+
 // document.addEventListener('click', function(e) {
 //     e = e || window.event;
 //     console.log(e.target);   
@@ -87,8 +90,9 @@ document.body.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${rando
 //touch events for mobile
 gridContainer.addEventListener('touchmove', function(e) {
     e.preventDefault();
-    let target = e.target;
-    if (target.classList.contains('cell')) target.style.background = getCurrentColor()
+    let cellLocation = e.changedTouches[0];
+    let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
+    if (cellTarget.classList.contains('cell')) cellTarget.style.background = getCurrentColor()
 });
 
 //Random RGB color - number value
@@ -119,9 +123,3 @@ button.addEventListener('click', () => {
         alert('Please input a number between 1 and 100')
     }
 });
-
-
-//Initial Display features 10x10 grid
-window.onload = () => {
-    createGrid();
-}
