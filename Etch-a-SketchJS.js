@@ -77,11 +77,19 @@ let createGrid = () => {
     cells.forEach((cell) => {
         cell.addEventListener('mouseenter', () => {
             cell.style.background = getCurrentColor()});
-        cell.addEventListener('touchmove', () => {
-                cell.style.background = getCurrentColor()})
     });
 document.body.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
 }
+// document.addEventListener('click', function(e) {
+//     e = e || window.event;
+//     console.log(e.target);   
+// }, false);
+//touch events for mobile
+gridContainer.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    let target = e.target;
+    if (target.classList.contains('cell')) target.style.background = getCurrentColor()
+});
 
 //Random RGB color - number value
 let randomRGB = () => Math.floor((Math.random()*257));
