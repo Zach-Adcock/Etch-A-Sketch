@@ -1,16 +1,28 @@
-
+.wrapper {
+    max-width: 100%;
+}
+.main {
+    display: flex;
+    flex-flow: column wrap;
+    position: relative;
+}
 .grid-container {
     display: grid;
     /* grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr); */
     /* border: 1px solid blue; */
-    height: 500px;
-    width: 500px;
+    height: 80vw;
+    width: 80vw;
     margin: 50px auto 0px auto;
     border: 8px solid black;
-
 } 
 
+.squares-container {
+    display: flex;
+    order: 1;
+    padding: 10px;
+    align-items: center;
+}
 
 .cell {
     /* border: 1px solid green; */
@@ -18,27 +30,121 @@
 
 .button-container {
     display: flex;
+    width: 100%;
     height: 100px;
+}
+.button-container > button{
+    width: 40%;
+    height: 80%;
 }
 
 .reset-button {
     margin: 10px auto 10px auto;
     height: 40px;
     width: 200px;
-    
+}
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    order: 2;
+    margin-top: 40px;
+}
+.options > button{
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+}
+.options > button:hover{
+    transform: scale(1.1);
+}
+.options > .active{
+    background-color: rgb(177, 243, 241);
 }
 
-/* This code can be used to create a grid if the cells are divided into rows     */
-/* .cell {
-    display: inline-block;
-    width: 6.25%;
-    height: 1em;
-    border: 1px solid red;
-    box-sizing: border-box;
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: azure;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+#github-logo {
+    width: 60px;
+    height: 60px;
+}
+.footer-container {
+    display: flex;
+    font-size: 40px;
+    align-items: center;
 }
 
-.row {
-    border: 1px solid green;
-    height: 1em;
-    line-height: 1em;
+.footer-container > p{
+    margin-right: 20px;
+}
+/* Styling to make color selector more aesthetically pleasing  */
+.color-choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: solid 2px black;
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border-radius: 15px;
+}
+#color-selector{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: none;
+}
+#color-selector::-webkit-color-swatch {
+    border-radius: 50%;
+    border: solid 3px black;
+}
+#color-selector::-moz-color-swatch {
+    border-radius: 50%;
+    border: solid 3px black;
+}
+#color-selector:hover{
+    transform: scale(1.1);
+}
+
+/* @media only screen and (max-width: 900px) {
+    .wrapper {
+        max-width: 100%;
+    }
+    .main {
+        display: grid;
+        flex-flow: column wrap;
+    }
+    .squares-container {
+    display: flex;
+    flex: 5;
+    padding: 10px;
+    align-items: center;
+    }
+    .color-choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: solid 2px black;
+    height: 200px;
+    width: 100px;
+    background-color: white;
+    border-radius: 15px;
+}
 } */

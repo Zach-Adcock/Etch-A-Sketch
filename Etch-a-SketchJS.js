@@ -1,3 +1,45 @@
+//Getting color choice buttons from HTML
+const colorSelectorButton = document.querySelector('.color-choice');
+const colorSelectorCircle = document.querySelector('#color-selector');
+const ludicrousButton = document.querySelector('#ludicrous');
+const eraserButton = document.querySelector('#eraser');
+const clearButton = document.querySelector('#clear');
+
+const buttonArray = [colorSelectorButton, ludicrousButton, eraserButton];
+
+const getCurrentColor = () => {
+    let currentButton = ''
+    buttonArray.forEach(button => {
+        if (button.classList.contains('active')) {
+            currentButton = button.innerText;
+        }
+    })
+    switch (currentButton) {
+        case 'Color Selector':
+            return colorSelectorCircle.value
+            break;
+        case 'Ludicrous Mode':
+            return `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`
+            break;
+        case 'Eraser':
+            return 'rgb(255, 255, 255)'
+            break;
+    }
+}
+
+
+const buttonClick = e => {
+    if (e.target.id === 'color-selector') return
+    buttonArray.forEach(button => {
+        button.classList.remove('active');
+    })
+    e.target.classList.add('active')
+}
+
+//Adding Event Listeners to buttons
+buttonArray.forEach(button => {
+    button.addEventListener('click', buttonClick)
+})
 
 //Identify box that will hold squares
 const boxContainer = document.getElementById("squares-container1");
@@ -5,6 +47,8 @@ const gridContainer = document.createElement('div');
 gridContainer.className = 'grid-container';
 
 
+const defaultSize = 10;
+let currentSize = 10;
 
 let deleteCells = () => {
     while(gridContainer.firstChild){
@@ -12,20 +56,17 @@ let deleteCells = () => {
     }
 }
 
-let createGrid = num => {
-    console.log(gridContainer);
+let createGrid = () => {
     deleteCells();
-    console.log(gridContainer);
-
-    for (let i =1; i<= (num**2); i++){
+    for (let i =1; i<= (currentSize**2); i++){
         var cell = document.createElement('div');
         cell.classList.add('cell');
         cell.id = i;
         cell.style.backgroundColor = 'white'
         gridContainer.append(cell);
     }
-    gridContainer.style.gridTemplateRows = `repeat(${num}, 1fr)`;
-    gridContainer.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
+    gridContainer.style.gridTemplateRows = `repeat(${currentSize}, 1fr)`;
+    gridContainer.style.gridTemplateColumns = `repeat(${currentSize}, 1fr)`;
 
 
     // let addBackground = () => {
@@ -35,24 +76,18 @@ let createGrid = num => {
     const cells = document.querySelectorAll('div.cell');
     cells.forEach((cell) => {
         cell.addEventListener('mouseenter', () => {
-            cell.style.background = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`}, {once: true})
-});
+            cell.style.background = getCurrentColor()});
+        cell.addEventListener('touchmove', () => {
+                cell.style.background = getCurrentColor()})
+    });
 document.body.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
 }
 
 //Random RGB color - number value
 let randomRGB = () => Math.floor((Math.random()*257));
 
-
 //Append grid container to the box container already in the HTML
 boxContainer.append(gridContainer);
-
-
-//Initial Display features 10x10 grid
-createGrid(10);
-
-
-
 
 //Creating reset button and its container
 const button = document.createElement('button');
@@ -62,16 +97,23 @@ const buttonContainer = document.createElement('div');
 buttonContainer.classList.add('button-container');
 
 buttonContainer.append(button);
-document.body.prepend(buttonContainer)
+
+const mainDiv = document.querySelector('.main'); //adding button to DIV
+mainDiv.prepend(buttonContainer);
 
 
 button.addEventListener('click', () => {
     let choice = window.prompt('How many squares per side?', 'Value must be < 100');
-    if (!isNaN(choice)){
-        createGrid(Math.abs(choice));
+    if (!isNaN(choice) && choice != 0 && choice < 100){
+        currentSize = Math.abs(choice);
+        createGrid();
     } else {
-        alert('Please input a number.')
+        alert('Please input a number between 1 and 100')
     }
-})
+});
 
 
+//Initial Display features 10x10 grid
+window.onload = () => {
+    createGrid();
+}
