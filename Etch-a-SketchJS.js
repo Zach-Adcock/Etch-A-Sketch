@@ -81,20 +81,6 @@ let createGrid = () => {
 document.body.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
 }
 
-createGrid(); //initial grid creation. Default size used
-
-// document.addEventListener('click', function(e) {
-//     e = e || window.event;
-//     console.log(e.target);   
-// }, false);
-//touch events for mobile
-gridContainer.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-    let cellLocation = e.changedTouches[0];
-    let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
-    if (cellTarget.classList.contains('cell')) cellTarget.style.background = getCurrentColor()
-});
-
 //Random RGB color - number value
 let randomRGB = () => Math.floor((Math.random()*257));
 
@@ -122,4 +108,17 @@ button.addEventListener('click', () => {
     } else {
         alert('Please input a number between 1 and 100')
     }
+});
+createGrid(); //initial grid creation. Default size used
+
+// document.addEventListener('click', function(e) {
+//     e = e || window.event;
+//     console.log(e.target);   
+// }, false);
+//touch events for mobile
+gridContainer.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    let cellLocation = e.changedTouches[0];
+    let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
+    if (cellTarget.classList.contains('cell')) cellTarget.style.background = getCurrentColor()
 });
