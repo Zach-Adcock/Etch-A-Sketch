@@ -15,7 +15,7 @@ const getCurrentColor = () => {
     })
     switch (currentButton) {
         case 'Color Selector':
-            clearButton.innerText="efg";
+            // clearButton.innerText="efg";
             ludicrousButton.innerText = colorSelectorCircle.value;
             return colorSelectorCircle.value
             break;
@@ -122,7 +122,7 @@ gridContainer.addEventListener('touchmove', function(e) {
     let cellLocation = e.changedTouches[0];
     let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
     if (cellTarget.classList.contains('cell')) {
-        clearButton.innerText="ef";
+        clearButton.innerText = cellTarget.id;
         cellTarget.style.background = getCurrentColor()
     } 
 });
