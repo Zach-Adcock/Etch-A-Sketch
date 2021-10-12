@@ -7,7 +7,6 @@ const clearButton = document.querySelector('#clear');
 
 const buttonArray = [colorChoiceButton, ludicrousButton, eraserButton];
 const getCurrentColor = () => {
-    clearButton.innerText = 'c';
     let currentButton = '';
     buttonArray.forEach(button => {
         if (button.classList.contains('active')) {
@@ -17,7 +16,7 @@ const getCurrentColor = () => {
     
     switch (currentButton) {
         case 'Color Selector':
-            return 'rgb(255, 0, 255)'
+            return colorSelectorCircle.value
         case 'Ludicrous Mode':
             return `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`
         case 'Eraser':
@@ -76,7 +75,7 @@ let createGrid = () => {
     const cells = document.querySelectorAll('div.cell');
     cells.forEach((cell) => {
         cell.addEventListener('mouseenter', () => {
-            cell.style.background = getCurrentColor()});
+            cell.style.backgroundColor = getCurrentColor()});
     });
 document.body.style.backgroundColor = `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`;
 }
