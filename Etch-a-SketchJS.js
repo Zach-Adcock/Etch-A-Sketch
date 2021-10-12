@@ -15,13 +15,15 @@ const getCurrentColor = () => {
     })
     switch (currentButton) {
         case 'Color Selector':
-            return colorSelectorCircle.value
+            return colorSelectorCircle.value;
             break;
         case 'Ludicrous Mode':
             return `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`
             break;
         case 'Eraser':
             return 'rgb(255, 255, 255)'
+            break;
+        default:
             break;
     }
 }
@@ -119,8 +121,7 @@ gridContainer.addEventListener('touchmove', function(e) {
     let cellLocation = e.changedTouches[0];
     let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
     if (cellTarget.classList.contains('cell')) {
-        clearButton.innerText= getCurrentColor();
-        // cellTarget.style.background = getCurrentColor()
+        cellTarget.style.backgroundColor = getCurrentColor()
     } 
 });
 
