@@ -119,8 +119,7 @@ gridContainer.addEventListener('touchmove', function(e) {
     clearButton.innerText="e"
     let cellLocation = e.changedTouches[0];
     let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
-    if (cellTarget.classList.contains('cell'))  
-    //cellTarget.style.background = getCurrentColor()
+    if (cellTarget.classList.contains('cell')) cellTarget.style.background = getCurrentColor()
 });
 
 createGrid(); //initial grid creation. Default size used
