@@ -6,7 +6,6 @@ const eraserButton = document.querySelector('#eraser');
 const clearButton = document.querySelector('#clear');
 
 const buttonArray = [colorSelectorButton, ludicrousButton, eraserButton];
-
 const getCurrentColor = () => {
     let currentButton = ''
     buttonArray.forEach(button => {
@@ -16,7 +15,7 @@ const getCurrentColor = () => {
     })
     switch (currentButton) {
         case 'Color Selector':
-            return 'rgb(50, 100, 100)'//colorSelectorCircle.value
+            return colorSelectorCircle.value
             break;
         case 'Ludicrous Mode':
             return `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`
@@ -109,7 +108,6 @@ button.addEventListener('click', () => {
         alert('Please input a number between 1 and 100')
     }
 });
-createGrid(); //initial grid creation. Default size used
 
 // document.addEventListener('click', function(e) {
 //     e = e || window.event;
@@ -118,10 +116,13 @@ createGrid(); //initial grid creation. Default size used
 //touch events for mobile
 gridContainer.addEventListener('touchmove', function(e) {
     e.preventDefault();
+    clearButton.innerText="e"
     let cellLocation = e.changedTouches[0];
     let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
     if (cellTarget.classList.contains('cell')) cellTarget.style.background = getCurrentColor()
 });
+
+createGrid(); //initial grid creation. Default size used
 
 //clearButton
 clearButton.addEventListener('click', createGrid)
