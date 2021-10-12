@@ -15,14 +15,11 @@ const getCurrentColor = () => {
     })
     switch (currentButton) {
         case 'Color Selector':
-            return colorSelectorCircle.value;
-            break;
+            return 'rgb(255, 0, 255)'
         case 'Ludicrous Mode':
             return `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`
-            break;
         case 'Eraser':
             return 'rgb(255, 255, 255)'
-            break;
         default:
             break;
     }
