@@ -16,7 +16,7 @@ const getCurrentColor = () => {
     })
     switch (currentButton) {
         case 'Color Selector':
-            return colorSelectorCircle.value
+            return 'rgb(50, 100, 100)'//colorSelectorCircle.value
             break;
         case 'Ludicrous Mode':
             return `rgb(${randomRGB()},${randomRGB()},${randomRGB()})`
@@ -101,7 +101,7 @@ mainDiv.prepend(buttonContainer);
 
 
 button.addEventListener('click', () => {
-    let choice = window.prompt('How many squares per side?', 'Value must be < 100');
+    let choice = window.prompt('How many squares per side? (1-99)');
     if (!isNaN(choice) && choice != 0 && choice < 100){
         currentSize = Math.abs(choice);
         createGrid();
