@@ -7,12 +7,14 @@ const clearButton = document.querySelector('#clear');
 
 const buttonArray = [colorChoiceButton, ludicrousButton, eraserButton];
 const getCurrentColor = () => {
-    let currentButton = ''
+    clearButton.innerText = 'c';
+    let currentButton = '';
     buttonArray.forEach(button => {
         if (button.classList.contains('active')) {
             currentButton = button.innerText;
         }
     })
+    
     switch (currentButton) {
         case 'Color Selector':
             return 'rgb(255, 0, 255)'
