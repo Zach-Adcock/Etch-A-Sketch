@@ -1,11 +1,11 @@
 //Getting color choice buttons from HTML
-const colorSelectorButton = document.querySelector('.color-choice');
+const colorChoiceButton = document.querySelector('.color-choice');
 const colorSelectorCircle = document.querySelector('#color-selector');
 const ludicrousButton = document.querySelector('#ludicrous');
 const eraserButton = document.querySelector('#eraser');
 const clearButton = document.querySelector('#clear');
 
-const buttonArray = [colorSelectorButton, ludicrousButton, eraserButton];
+const buttonArray = [colorChoiceButton, ludicrousButton, eraserButton];
 const getCurrentColor = () => {
     let currentButton = ''
     buttonArray.forEach(button => {
@@ -15,8 +15,6 @@ const getCurrentColor = () => {
     })
     switch (currentButton) {
         case 'Color Selector':
-            // clearButton.innerText="efg";
-            ludicrousButton.innerText = colorSelectorCircle.value;
             return colorSelectorCircle.value
             break;
         case 'Ludicrous Mode':
@@ -118,12 +116,11 @@ button.addEventListener('click', () => {
 //touch events for mobile
 gridContainer.addEventListener('touchmove', function(e) {
     e.preventDefault();
-    clearButton.innerText="e"
     let cellLocation = e.changedTouches[0];
     let cellTarget = document.elementFromPoint(cellLocation.clientX, cellLocation.clientY);
     if (cellTarget.classList.contains('cell')) {
-        clearButton.innerText = cellTarget.id;
-        cellTarget.style.background = getCurrentColor()
+        clearButton.innerText= getCurrentColor();
+        // cellTarget.style.background = getCurrentColor()
     } 
 });
 
