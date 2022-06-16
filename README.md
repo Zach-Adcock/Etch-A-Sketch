@@ -2,7 +2,7 @@
 
 <h3>Demo GIF</h3>
 
-<img src="" width="full" height="auto" />
+<img src="/images/demo-etch-a-sketch.gif" width="full" height="auto" />
 
 
 
